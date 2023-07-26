@@ -1,0 +1,4 @@
+Number of nodes = 30
+Number of receiver = 1
+Video fps = 30
+Video event probability = 0.005
