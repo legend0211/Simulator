@@ -1,7 +1,6 @@
 import math
 import random
-import Delay.settings2 as settings2
-import numpy as np
+import settings2 as settings2
 import global_arrays as ga
 
 
@@ -83,7 +82,7 @@ def transmit_video(video, i, str):
     """
     # Do transfer of (video)
     """
-    with open('Transfer details.txt', 'a') as f:
+    with open(r'output\Transfer details.txt', 'a') as f:
         f.write(f"\nTransmitted video from camera {i} with quality {str}")
 
 # Function to find only i-frames of the no event videos
@@ -173,14 +172,14 @@ def send_video(event_array, data_rate_allocated, video_1080p, video_720p, video_
                         """
                         with open('Transfer details.txt', 'a') as f:
                             f.write(f"\nDropped video from camera {i+1}")
-    with open('Transfer details.txt', 'a') as f:
+    with open(r'output\Transfer details.txt', 'a') as f:
         f.write("\n========================================================================\n")
 
 def main(ii):
     arr = settings2.main()
     video_1080p, video_720p, video_480p, video_360p = generate_gop_size(arr)
     if(ii == 0):
-        with open('GOP sizes.txt', 'w') as f:
+        with open(r'output\GOP sizes.txt', 'w') as f:
             text = f"SAMPLE SECOND {ii+1}\n"
             text += "================================================\n"
             text += "\n1080p GOP sizes : " + str(video_1080p) + "\n"
@@ -188,11 +187,11 @@ def main(ii):
             text += "\n480p GOP sizes : " + str(video_480p) + "\n"
             text += "\n360p GOP sizes : " + str(video_360p) + "\n\n\n"
             f.write(text)
-        with open('Transfer details.txt', 'w') as f:
+        with open(r'output\Transfer details.txt', 'w') as f:
             f.write(f"SAMPLE SECOND {ii+1}\n")
             
     else:
-        with open('GOP sizes.txt', 'a') as f:
+        with open(r'output\GOP sizes.txt', 'a') as f:
             text = f"SAMPLE SECOND {ii+1}\n"
             text += "================================================\n"
             text += "\n1080p GOP sizes : " + str(video_1080p) + "\n"
@@ -200,7 +199,7 @@ def main(ii):
             text += "\n480p GOP sizes : " + str(video_480p) + "\n"
             text += "\n360p GOP sizes : " + str(video_360p) + "\n\n\n"
             f.write(text)
-        with open('Transfer details.txt', 'a') as f:
+        with open(r'output\Transfer details.txt', 'a') as f:
             f.write(f"\nSAMPLE SECOND {ii+1}\n")
 
     data_rate_allocated = allocate_data_rate(arr)

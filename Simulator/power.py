@@ -27,7 +27,7 @@ def main(size, ii, sec):
     for i in sorted_indices:
         a_sorted_b.append(a[i])
     
-    b.sort() # = b[sorted_indices]
+    b.sort()
     a_0 = []
     a_1 = []
     for i in range(len(a_sorted_b)):
@@ -44,7 +44,6 @@ def main(size, ii, sec):
     for i in sorted_indices:
         aa_1.append(a_1[i])
     camera_list = aa_1 + aa_0
-    print(camera_list)
     
     # Pareto distribution
     if(boolean == 0):
@@ -65,14 +64,14 @@ def main(size, ii, sec):
        
     
     if(ii == 0):
-        with open(r"C:\Users\soham\Desktop\Coding\Project\Simulator\Simulator\camera_power.txt", 'w') as f:
+        with open(r"output\camera_power.txt", 'w') as f:
             f.write("SAMPLE SECOND : "+str(ii+1)+"\n\n")
             for i in range(size):
                 f.write(f"CCTV Camera {camera_list[(size-1)-i]}: {samples[i]:.5f} watts\n")
                 c[camera_list[(size-1)-i]-1] += samples[i]
             f.write("================================================================\n\n")
     else:
-        with open(r"C:\Users\soham\Desktop\Coding\Project\Simulator\Simulator\camera_power.txt", 'a') as f:
+        with open(r"output\camera_power.txt", 'a') as f:
             f.write("SAMPLE SECOND : "+str(ii+1)+"\n\n")
             for i in range(size):
                 f.write(f"CCTV Camera {camera_list[(size-1)-i]}: {samples[i]:.5f} watts\n")
@@ -80,7 +79,7 @@ def main(size, ii, sec):
             f.write("================================================================\n\n")
             
     if(ii == sec-1):
-        with open(r"C:\Users\soham\Desktop\Coding\Project\Simulator\Simulator\camera_power.txt", 'a') as f:
+        with open(r"output\camera_power.txt", 'a') as f:
             f.write("================================================================\n")
             f.write("================================================================\n")
             f.write(f"SAMPLE of {sec} SECONDS : \n\n")
@@ -90,4 +89,3 @@ def main(size, ii, sec):
             f.write(f"\nVariance = {np.var(var_arr)}\n")
             f.write("================================================================\n\n")
         return 1
-    

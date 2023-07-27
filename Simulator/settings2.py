@@ -1,6 +1,8 @@
+# Fetching the video quality of nodes
+
 def main():
     arr = []
-    with open(r"C:\Users\soham\Desktop\Coding\Project\Simulator\Simulator\settings2.txt", "r") as file:
+    with open("settings2.txt", "r") as file:
         for line in file:
             data = line.strip().split("=")
             arr.append(data[1].strip())

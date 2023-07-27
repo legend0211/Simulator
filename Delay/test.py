@@ -192,12 +192,7 @@ def send_video(event_array, data_rate_allocated, video_1080p, video_720p, video_
 def main(cnt):
     arr = settings2.main()
     video_1080p, video_720p, video_480p, video_360p = generate_gop_size(cnt, arr)
-    # print("1080p GOP sizes : \n",video_1080p)
-    # print("\n720p GOP sizes : \n",video_720p)
-    # print("\n480p GOP sizes : \n",video_480p)
-    # print("\n360p GOP sizes : \n",video_360p)
-    # print("\n")
-
+    
     data_rate_allocated = allocate_data_rate(arr)
     for i in range(len(data_rate_allocated)):
         alloc_data_rate[i].append(data_rate_allocated[i])
@@ -209,9 +204,7 @@ def main(cnt):
             event_array.append(1)
         else:
             event_array.append(0)
-    # print("\nEvent array : \n",event_array)
-    # print("\n")
-
+    
     send_video(event_array, data_rate_allocated, video_1080p, video_720p, video_480p, video_360p)
 
 print("SAMPLE FOR 100 SECONDS")
@@ -259,6 +252,9 @@ print()
 print()
 
 
+# The delays are counted by dividing the amount of video 
+# still required to be sent by the average allocated data rate
+
 delay_1080 = []
 for i in range(len(alloc_data_rate)):
     alloc_cnt = 0
@@ -275,7 +271,7 @@ for i in range(len(alloc_data_rate)):
 for i in range(len(delay_1080)) :
     delay_1080[i] = float(format(delay_1080[i]/avg_alloc_data_rate[i],"0.2f"))
 
-print("Delay for 1080p : ")
+print("Delay for 1080p for camera [1-30] in seconds : ")
 print(delay_1080)
 print()
 
@@ -294,7 +290,7 @@ for i in range(len(alloc_data_rate)):
 
 for i in range(len(delay_720)) :
     delay_720[i] = float(format(delay_720[i]/avg_alloc_data_rate[i],"0.2f"))
-print("Delay for 720p : ")
+print("Delay for 720p for camera [1-30] in seconds : ")
 print(delay_720)
 print()
 
@@ -313,7 +309,7 @@ for i in range(len(alloc_data_rate)):
 
 for i in range(len(delay_480)) :
     delay_480[i] = float(format(delay_480[i]/avg_alloc_data_rate[i],"0.2f"))
-print("Delay for 480p : ")
+print("Delay for 480p for camera [1-30] in seconds : ")
 print(delay_480)
 print()
 
@@ -332,6 +328,6 @@ for i in range(len(alloc_data_rate)):
 
 for i in range(len(delay_360)) :
     delay_360[i] = float(format(delay_360[i]/avg_alloc_data_rate[i],"0.2f"))
-print("Delay for 360p : ")
+print("Delay for 360p for camera [1-30] in seconds : ")
 print(delay_360)
 
