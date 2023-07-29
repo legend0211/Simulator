@@ -11,4 +11,7 @@ camera_no = [i for i in range(1, int(nodes)+1)]
 count_pred = [0 for _ in range(int(nodes))]
 
 value = 0
+
 cnt = [0 for _ in range(int(nodes))]
+
+kiosk_for_cam = [0 for _ in range(int(nodes))]

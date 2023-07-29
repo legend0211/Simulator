@@ -3,27 +3,6 @@ import random
 import settings2 as settings2
 import global_arrays as ga
 
-
-def camera_distance():
-    grid_size = 5000
-    num_points = 30
-
-    # Generate a list of all possible grid points
-    all_points = [(x, y) for x in range(grid_size) for y in range(grid_size)]
-    all_points.remove((2500,2500))
-
-    # Select 30 random points from the list
-    random_points = random.sample(all_points, num_points)
-    distances = []
-    random_points.sort()
-
-    # Print the selected random points
-    print("\nPoint","\t\t","Distance")
-    for point in random_points:
-        distances.append(math.sqrt((2500 - point[0])**2 + (2500 - point[1])**2))
-        print(point,"\t",distances[len(distances)-1])    
-    print("\n")    
-
 # Function to find size of group of frames of 1 second
 def generate_gop_size(arr):
     video_1080p = []
@@ -67,7 +46,6 @@ def generate_gop_size(arr):
         else:
             print("Wrong input")
             exit()
-        
 
     return video_1080p, video_720p, video_480p, video_360p
 
@@ -83,7 +61,7 @@ def transmit_video(video, i, str):
     # Do transfer of (video)
     """
     with open(r'output\Transfer details.txt', 'a') as f:
-        f.write(f"\nTransmitted video from camera {i} with quality {str}")
+        f.write(f"\nTransmitted video from camera {i} to kiosk {ga.kiosk_for_cam[i-1]} with quality {str}")
 
 # Function to find only i-frames of the no event videos
 def get_i_frame(video):
